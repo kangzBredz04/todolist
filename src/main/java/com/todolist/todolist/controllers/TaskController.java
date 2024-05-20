@@ -1,5 +1,7 @@
 package com.todolist.todolist.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,13 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
+
+    // @GetMapping("/list-task")
+    // public String listTask(Model model) {
+    // List<Task> tasks = taskService.getAllTask();
+    // model.addAttribute("tasks", tasks);
+    // return "index";
+    // }
 
     @GetMapping("/")
     public String index(Model model) {
