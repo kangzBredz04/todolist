@@ -10,6 +10,15 @@ import com.todolist.todolist.models.Task;
 
 @Service
 public class TaskService {
+    // public List<Task> getAllTask() {
+    // List<Task> tasks = new ArrayList<>();
+    // tasks.add(new Task(1L, "A", true));
+    // tasks.add(new Task(2L, "B", false));
+    // tasks.add(new Task(3L, "C", false));
+
+    // return tasks;
+    // }
+
     private List<Task> tasks = new ArrayList<>();
     private AtomicLong counter = new AtomicLong();
 
