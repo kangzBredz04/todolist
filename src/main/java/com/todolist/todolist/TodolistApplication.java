@@ -13,13 +13,18 @@ public class TodolistApplication {
 		SpringApplication.run(TodolistApplication.class, args);
 	}
 
-	@RestController
-	class HelloWorld {
-		@GetMapping("/")
-		public String hello() {
-			return "Hello world";
-		}
+	// Ringkasnya,
+	// @Controller untuk aplikasi web tradisional dengan views,
+	// sementara @RestController untuk layanan RESTful yang mengembalikan data
+	// langsung.
+	// @Controller
+	// @RestController
+	// class HelloWorld {
+	// @GetMapping("/")
+	// public String hello() {
+	// return "Hello world";
+	// }
 
-	}
+	// }
 
 }
