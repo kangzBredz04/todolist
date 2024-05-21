@@ -23,27 +23,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>To-Do List</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      .task-table {
+        margin-top: 20px;
+      }
+      .btn-custom {
+        margin-right: 5px;
+      }
+      .completed-task {
+        text-decoration: line-through;
+      }
+    </style>
   </head>
   <body>
-    <h1>To-Do List</h1>
-    <a href="/task/new">Add New Task</a>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Completed</th>
-        <th>Actions</th>
-      </tr>
-      <tr th:each="task, in : ${tasks}">
-        <td th:text="${in.index} + 1"></td>
-        <td th:text="${task.description}"></td>
-        <td th:text="${task.completed ? 'Yes' : 'No'}"></td>
-        <td>
-          <a th:href="@{/task/edit/{id}(id=${task.id})}">Edit</a> |
-          <a th:href="@{/task/delete/{id}(id=${task.id})}">Delete</a>
-        </td>
-      </tr>
-    </table>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">To-Do List</h1>
+        <a href="/task/new" class="btn btn-primary">Add New Task</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover task-table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Description</th>
+              <th scope="col">Completed</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              th:each="task, iterStat : ${tasks}"
+              th:classappend="${task.completed} ? 'completed-task'"
+            >
+              <th scope="row" th:text="${iterStat.count}">1</th>
+              <td th:text="${task.description}">Sample Task</td>
+              <td th:text="${task.completed ? 'Yes' : 'No'}">No</td>
+              <td>
+                <a
+                  th:href="@{/task/edit/{id}(id=${task.id})}"
+                  class="btn btn-sm btn-warning btn-custom"
+                  >Edit</a
+                >
+                <a
+                  th:href="@{/task/delete/{id}(id=${task.id})}"
+                  class="btn btn-sm btn-danger btn-custom"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

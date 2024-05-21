@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Task Form</title>
@@ -20,5 +20,72 @@
       </div>
     </form>
     <a href="/">Back to List</a>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Task Form</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      .form-container {
+        margin-top: 20px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Task Form</h1>
+        <a href="/" class="btn btn-secondary">Back to List</a>
+      </div>
+      <div class="form-container">
+        <form th:action="@{/task}" th:object="${task}" method="post">
+          <input type="hidden" th:field="*{id}" />
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              th:field="*{description}"
+              class="form-control"
+              placeholder="Enter task description"
+            />
+          </div>
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              id="completed"
+              th:field="*{completed}"
+              class="form-check-input"
+            />
+            <label class="form-check-label" for="completed">Completed</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
